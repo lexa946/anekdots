@@ -1,0 +1,1 @@
+from .main import SAuthor, SAnekdotAdd, SAnekdot, SAuthorAdd

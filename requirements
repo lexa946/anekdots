@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+alembic
+jinja2
+sqlalchemy
+aiosqlite
