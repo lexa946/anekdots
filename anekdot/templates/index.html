@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<section id="anekdots">
+    <div class="mx-auto d-flex justify-content-around" style="font-size: 20px;">
+        {% for anekdot in anekdots %}
+        <div class="card border-light mb-3 anekdot_card">
+            <div class="card-header">
+                {% if anekdot.author %}
+                    <a href="{{ anekdot.author.link }}">{{ anekdot.author.name }}</a>
+                {% else %}
+                    <a href="#">Неизвестный</a>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <p class="card-text d-block">{{ anekdot.text }}</p>
+                <div class="anekdot_manipulation">
+                    <button class="btn btn-success" anekdot_id="{{anekdot.id}}">Like {{ anekdot.likes }}</button>
+                    <button class="btn btn-danger" anekdot_id="{{anekdot.id}}">Dislike {{ anekdot.dislikes }}</button>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+<div class="d-flex justify-content-center">
+    <button class="btn-orange" id="refresh" ><span>Обновить</span></button>
+</div>
+
+
+
+{% endblock %}

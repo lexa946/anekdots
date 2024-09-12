@@ -1,0 +1,27 @@
+body {
+    background: url("/anekdot/static/background-2.png") no-repeat bottom;
+    background-size: contain;
+    background-color: rgb(255, 235, 153);
+}
+html,
+body {
+    height: 100%;
+}
+
+section#anekdots {
+    min-height: 50%;
+}
+
+.anekdot_card {
+    width: 30%;
+
+}
+
+.anekdot_card p {
+
+}
+
+
+.anekdot_manipulation {
+    float: right;
+}

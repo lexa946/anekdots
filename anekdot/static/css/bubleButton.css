@@ -1,0 +1,50 @@
+.btn-orange {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 1px;
+	margin: 0 15px 15px 0;
+	outline: none;
+	border: 1px solid #F18230;
+	border-radius: 25px;
+	height: 46px;
+	line-height: 0;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	color: #fff;
+	background-color: #fff;
+	position: relative;
+	overflow: hidden;
+	vertical-align: top;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+}
+.btn-orange span {
+	display: block;
+	box-sizing: border-box;
+	padding: 0 25px;
+	height: 42px;
+	line-height: 38px;
+	border: 1px solid #F18230;
+	border-radius: 25px;
+	font-size: 14px;
+	color: #FFFFFF;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), #F18230;
+	text-align: center;
+	font-weight: 600;
+}
+.btn-orange:focus-visible {
+	box-shadow: 0 0 0 3px lightskyblue;
+}
+.btn-orange:hover span {
+	background-color: #fba768
+}
+.btn-orange:active span {
+	background-color: #c17237 !important;
+}
+.btn-orange:disabled {
+	opacity: 0.65;
+	pointer-events: none;
+}
