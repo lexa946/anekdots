@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.sql.functions import count
+from sqlalchemy.sql.functions import count, random
 from starlette import status
 
 from anekdot.backend.db import new_session
@@ -104,3 +104,15 @@ class AnekdotRepository:
             return await session.scalar(
                 select(count()).select_from(Anekdot)
             )
+
+    @classmethod
+    async def get_random(cls):
+        async with new_session() as session:
+            session: AsyncSession
+            res = await session.scalar(
+                select(Anekdot).order_by(random())
+            )
+            print(res)
+            return res
+
+

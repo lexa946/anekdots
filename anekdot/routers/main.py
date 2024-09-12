@@ -22,15 +22,13 @@ async def add_author(author_add: SAuthorAdd):
 
 @router.get('/random')
 async def random_anekdot() -> SAnekdotResponse:
-    count_anekdot = await AnekdotRepository.count()
-    if count_anekdot:
-        random_id = random.randint(1, count_anekdot)
-        return await get_anekdot_by_id(random_id)
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Anekdots not found!"
-        )
+
+    anekdot = await AnekdotRepository.get_random()
+
+    return {
+        'status_code': status.HTTP_200_OK,
+        'anekdot': anekdot
+    }
 
 
 @router.get('/{anekdot_id}')

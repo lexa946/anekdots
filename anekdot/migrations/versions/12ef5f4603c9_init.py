@@ -1,8 +1,8 @@
-"""Add like and dislike column
+"""Init
 
-Revision ID: 010c28c00021
+Revision ID: 12ef5f4603c9
 Revises: 
-Create Date: 2024-09-11 21:10:09.645058
+Create Date: 2024-09-12 19:16:20.180642
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '010c28c00021'
+revision: str = '12ef5f4603c9'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
