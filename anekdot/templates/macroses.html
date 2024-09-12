@@ -1,0 +1,19 @@
+{% macro anekdot_card(anekdot) %}
+<div class="card border-light mb-3 anekdot_card" anekdot_id="{{anekdot.id}}">
+    <div class="card-header">
+        {% if anekdot.author %}
+        <a href="{{ anekdot.author.link }}">{{ anekdot.author.name }}</a>
+        {% else %}
+        <a href="#">Неизвестный</a>
+        {% endif %}
+    </div>
+    <div class="card-body d-flex flex-column">
+        <p class="card-text d-block">{{ anekdot.text }}</p>
+        <div class="anekdot_manipulation mt-auto">
+            <button class="btn btn-success">Like {{ anekdot.likes }}</button>
+            <button class="btn btn-danger">Dislike {{ anekdot.dislikes }}</button>
+            <button class="btn btn-primary" title="Нажмите для копирования ссылки">Поделиться</button>
+        </div>
+    </div>
+</div>
+{% endmacro %}

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
             let anekdotCard = anekdotCards[i];
 
             let headerLink = anekdotCard.querySelector(".card-header a");
-            console.log(author);
+
             if (author === null){
                 headerLink.setAttribute('href', '#');
                 headerLink.innerHTML = 'Неизвестный';
@@ -25,24 +25,17 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
             anekdotCard.querySelector('p.card-text').innerHTML = anekdotText;
+            anekdotCard.setAttribute('anekdot_id', json['anekdot']['id']);
 
             let likeButton = anekdotCard.querySelector('.anekdot_manipulation .btn-success');
-            console.log(likeButton);
-            likeButton.setAttribute('anekdot_id', json['anekdot']['id']);
             likeButton.innerHTML = 'Like '+ json['anekdot']['likes'];
 
             let dislikeButton = anekdotCard.querySelector('.anekdot_manipulation .btn-danger');
-            dislikeButton.setAttribute('anekdot_id', json['anekdot']['id']);
             dislikeButton.innerHTML = 'Dislike '+ json['anekdot']['dislikes'];
 
+            let clipButton = anekdotCard.querySelector('.anekdot_manipulation .btn-primary');
+            clipButton.setAttribute('title', 'Нажмите для копирования ссылки');
         };
-
-
-
     };
-
-
     refreshButton.addEventListener('click', clickRefresh);
-
-
 });

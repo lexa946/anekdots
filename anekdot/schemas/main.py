@@ -16,10 +16,7 @@ class SAuthor(SAuthorAdd):
 
 class SAnekdotAdd(BaseModel):
     text: str = Field(examples=["Колобок повесился!"])
-
     author: SAuthorAdd | None = None
-
-
 
     model_config = ConfigDict(from_attributes=True)
 

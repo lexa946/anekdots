@@ -1,18 +1,16 @@
-import random
-
-from fastapi import APIRouter, Path, Depends, HTTPException
+from fastapi import APIRouter, Path, HTTPException
 from starlette import status
 from typing_extensions import Annotated
 
-from anekdot.schemas import SAnekdot, SAnekdotAdd, SAuthor, SAuthorAdd
-from anekdot.schemas.main_response import SAnekdotResponse
+from anekdot.schemas import SAnekdotAdd, SAuthorAdd
+from anekdot.schemas.main_response import SAnekdotResponse, SAuthorResponse
 from anekdot.backend.repository import AnekdotRepository, AuthorRepository
 
 router = APIRouter(prefix="/anekdot/api/anekdot", tags=['Anekdot'])
 
 
 @router.post('/author')
-async def add_author(author_add: SAuthorAdd):
+async def add_author(author_add: SAuthorAdd) -> SAuthorResponse:
     author = await AuthorRepository.add(author_add)
     return {
         'status_code': status.HTTP_201_CREATED,

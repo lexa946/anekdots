@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+
+<form action="/anekdot/add" method="post" style="max-width: 60%;" class="mx-auto">
+    <div class="input-group mb-3">
+        <input type="text" name="author_name" class="form-control" maxlength="25"
+               placeholder="Имя автора..." aria-label="Add name" aria-describedby="button-aadon2"/>
+        <input type="text" name="author_link" class="form-control" maxlength="100"
+               placeholder="Ссылка на автора..." aria-label="Add description" aria-describedby="button-aadon2"/>
+        <button type="submit" class="btn btn-outline-success" id="button-addon2"
+                data-mdb-ripple-color="dark">Добавить
+        </button>
+
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" id="text" name="anekdot_text" rows="3" placeholder="Пиши анекдот..." required></textarea>
+    </div>
+</form>
+
+
+{% endblock %}

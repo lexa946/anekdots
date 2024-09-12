@@ -8,6 +8,15 @@ body {
     height: 100%;
 }
 
+.content{
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+
 section#anekdots {
     min-height: 50%;
 }
@@ -21,7 +30,6 @@ section#anekdots {
 
 }
 
-
-.anekdot_manipulation {
-    float: right;
+form {
+    max-width: 60%;
 }

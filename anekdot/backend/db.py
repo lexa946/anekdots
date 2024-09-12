@@ -3,7 +3,6 @@ from sqlalchemy.orm import DeclarativeBase
 from config import PG_HOST, PG_USER, PG_PASSWOD
 
 
-
 class Base(DeclarativeBase):
     pass
 
