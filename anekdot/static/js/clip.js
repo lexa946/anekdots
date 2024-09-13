@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let anekdot_id = button.parentNode.parentNode.parentNode.getAttribute('anekdot_id');
             let inputClip = button.parentNode.querySelector('input');
             let link = location.protocol + "//"+location.host+"/anekdot/"+anekdot_id;
-            input.value = link;
+            inputClip.setAttribute('value', link);
 //            navigator.clipboard.writeText(location.protocol + "//"+location.host+"/anekdot/"+anekdot_id).then()
-            input.select();
+            inputClip.select();
             if(document.execCommand('copy')){
                 button.setAttribute('title', 'Ссылка скопирована: '+link)
             }else{
