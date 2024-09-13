@@ -12,8 +12,10 @@
         <div class="anekdot_manipulation mt-auto">
             <button class="btn btn-success">Like {{ anekdot.likes }}</button>
             <button class="btn btn-danger">Dislike {{ anekdot.dislikes }}</button>
+            <input type="text" value="" class="clip-input" hidden>
             <button class="btn btn-primary" title="Нажмите для копирования ссылки">Поделиться</button>
         </div>
+
     </div>
 </div>
 {% endmacro %}
