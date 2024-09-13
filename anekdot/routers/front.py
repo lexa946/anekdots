@@ -10,7 +10,6 @@ from anekdot.schemas import SAnekdotAdd, SAuthorAdd
 router = APIRouter(prefix="/anekdot", tags=['Front'])
 templates = Jinja2Templates(directory="anekdot/templates")
 
-
 @router.get('/')
 async def index(request: Request):
     anekdots = []
@@ -37,7 +36,7 @@ async def add_post(request: Request, anekdot_text: Annotated[str, Form()],
     author_add = SAuthorAdd(name=author_name, link=author_link)
     anekdot_add = SAnekdotAdd(text=anekdot_text, author=author_add)
     response = await add_anekdot(anekdot_add)
-    return RedirectResponse(f"http://127.0.0.1:8082/anekdot/{response['anekdot'].id}", status_code=status.HTTP_302_FOUND)
+    return RedirectResponse(f"{request.base_url}anekdot/{response['anekdot'].id}", status_code=status.HTTP_302_FOUND)
 
 @router.get('/{anekdot_id:int}')
 async def get_by_id(request: Request, anekdot_id: Annotated[int, Path(ge=1)]):
