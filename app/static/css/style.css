@@ -1,5 +1,5 @@
 body {
-    background: url("/anekdot/static/background-2.png") no-repeat bottom;
+    background: url("/static/background-2.png") no-repeat bottom;
     background-size: contain;
     background-color: rgb(255, 235, 153);
 }

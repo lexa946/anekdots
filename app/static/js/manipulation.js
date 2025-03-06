@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     likeButtons.forEach(button =>{
         button.addEventListener('click', event => {
             let anekdot_id = button.parentNode.parentNode.parentNode.getAttribute('anekdot_id');
-            fetch(location.protocol + '//' + location.host+'/anekdot/api/anekdot/like/' + anekdot_id,
+            fetch(location.protocol + '//' + location.host+'/api/like/' + anekdot_id,
             {
                 method: 'POST'
             }).then(response => {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
         button.addEventListener('click', event => {
             let anekdot_id = button.parentNode.parentNode.parentNode.getAttribute('anekdot_id');
 
-            fetch(location.protocol + '//' + location.host+'/anekdot/api/anekdot/dislike/' + anekdot_id,
+            fetch(location.protocol + '//' + location.host+'/api/dislike/' + anekdot_id,
             {
                 method: 'POST'
             }).then(response => {

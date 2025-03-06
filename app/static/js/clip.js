@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener('click', event => {
             let anekdot_id = button.parentNode.parentNode.parentNode.getAttribute('anekdot_id');
             let inputClip = button.parentNode.querySelector('input');
-            let link = location.protocol + "//"+location.host+"/anekdot/"+anekdot_id;
+            let link = location.protocol + "//"+location.host+"/"+anekdot_id;
             inputClip.setAttribute('value', link);
 //            navigator.clipboard.writeText(location.protocol + "//"+location.host+"/anekdot/"+anekdot_id).then()
             inputClip.select();

@@ -1,0 +1,9 @@
+services:
+  anekdots:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    image: anekdots:latest
+    ports:
+      - "8087:8000"

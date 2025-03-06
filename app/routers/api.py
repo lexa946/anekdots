@@ -2,11 +2,11 @@ from fastapi import APIRouter, Path, HTTPException
 from starlette import status
 from typing_extensions import Annotated
 
-from anekdot.schemas import SAnekdotAdd, SAuthorAdd
-from anekdot.schemas.main_response import SAnekdotResponse, SAuthorResponse
-from anekdot.backend.repository import AnekdotRepository, AuthorRepository
+from app.schemas import SAnekdotAdd, SAuthorAdd
+from app.schemas.main_response import SAnekdotResponse, SAuthorResponse
+from app.backend.repository import AnekdotRepository, AuthorRepository
 
-router = APIRouter(prefix="/anekdot/api/anekdot", tags=['Anekdot'])
+router = APIRouter(prefix="/api", tags=['Anekdot'])
 
 
 @router.post('/author')

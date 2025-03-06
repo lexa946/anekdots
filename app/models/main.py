@@ -1,8 +1,7 @@
-from sqlalchemy import String, ForeignKey, Integer
+from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy.util import await_only
 
-from anekdot.backend.db import Base
+from app.backend.db import Base
 
 class Author(Base):
     __tablename__ = 'authors'

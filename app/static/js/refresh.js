@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     async function clickRefresh(event) {
         for (let i = 0; i < 3; i++){
-            let response = await fetch(location.protocol + '//' + location.host+'/anekdot/api/anekdot/random');
+            let response = await fetch(location.protocol + '//' + location.host+'/api/random');
             let json = await response.json();
 
             let anekdotText = json['anekdot']['text'];
@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
             let clipButton = anekdotCard.querySelector('.anekdot_manipulation .btn-primary');
             clipButton.setAttribute('title', 'Нажмите для копирования ссылки');
+            clipButton.setAttribute('href', `/${json['anekdot']['id']}`);
         };
     };
     refreshButton.addEventListener('click', clickRefresh);

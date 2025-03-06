@@ -4,11 +4,11 @@ from fastapi.templating import Jinja2Templates
 from starlette import status
 from typing_extensions import Annotated
 
-from anekdot.routers.main import random_anekdot, add_anekdot, get_anekdot_by_id
-from anekdot.schemas import SAnekdotAdd, SAuthorAdd
+from app.routers.api import random_anekdot, add_anekdot, get_anekdot_by_id
+from app.schemas import SAnekdotAdd, SAuthorAdd
 
-router = APIRouter(prefix="/anekdot", tags=['Front'])
-templates = Jinja2Templates(directory="anekdot/templates")
+router = APIRouter(prefix="", tags=['Front'])
+templates = Jinja2Templates(directory="app/templates")
 
 @router.get('/')
 async def index(request: Request):
@@ -36,7 +36,7 @@ async def add_post(request: Request, anekdot_text: Annotated[str, Form()],
     author_add = SAuthorAdd(name=author_name, link=author_link)
     anekdot_add = SAnekdotAdd(text=anekdot_text, author=author_add)
     response = await add_anekdot(anekdot_add)
-    return RedirectResponse(f"{request.base_url}anekdot/{response['anekdot'].id}", status_code=status.HTTP_302_FOUND)
+    return RedirectResponse(f"{request.base_url}{response['anekdot'].id}", status_code=status.HTTP_302_FOUND)
 
 @router.get('/{anekdot_id:int}')
 async def get_by_id(request: Request, anekdot_id: Annotated[int, Path(ge=1)]):

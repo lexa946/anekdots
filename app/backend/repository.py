@@ -4,16 +4,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql.functions import count, random
 from starlette import status
 
-from anekdot.backend.db import new_session
-from anekdot.schemas import SAnekdotAdd, SAuthorAdd, SAuthor, SAnekdot
-from anekdot.models import Author, Anekdot
+from app.backend.db import async_session_maker
+from app.schemas import SAnekdotAdd, SAuthorAdd, SAuthor, SAnekdot
+from app.models import Author, Anekdot
 
 
 class AuthorRepository:
 
     @classmethod
     async def add(cls, author_add: SAuthorAdd) -> SAuthor:
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
             author = Author(**author_add.model_dump())
             session.add(author)
@@ -23,9 +23,8 @@ class AuthorRepository:
 
     @classmethod
     async def get_by(cls, **kwargs) -> SAuthor | None:
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
-            print(kwargs)
             if 'name' in kwargs:
                 author = await session.scalar(
                     select(Author).where(Author.name == kwargs['name'])
@@ -43,7 +42,7 @@ class AnekdotRepository:
 
     @classmethod
     async def get_by_id(cls, anekdot_id: int) -> SAnekdot | None:
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
             anekdot = await session.scalar(
                 select(Anekdot).where(Anekdot.id == anekdot_id)
@@ -52,7 +51,7 @@ class AnekdotRepository:
 
     @classmethod
     async def add(cls, anekdot_add: SAnekdotAdd) -> SAnekdot:
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
 
             if anekdot_add.author.name:
@@ -77,7 +76,7 @@ class AnekdotRepository:
         if not anekdot:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Anekdot with id {anekdot_id} not found!")
         anekdot.likes += 1
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
             session.add(anekdot)
             await session.commit()
@@ -89,7 +88,7 @@ class AnekdotRepository:
         if not anekdot:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Anekdot with id {anekdot_id} not found!")
         anekdot.dislikes += 1
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
             session.add(anekdot)
             await session.commit()
@@ -98,7 +97,7 @@ class AnekdotRepository:
 
     @classmethod
     async def count(cls):
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
 
             return await session.scalar(
@@ -107,12 +106,11 @@ class AnekdotRepository:
 
     @classmethod
     async def get_random(cls):
-        async with new_session() as session:
+        async with async_session_maker() as session:
             session: AsyncSession
             res = await session.scalar(
                 select(Anekdot).order_by(random())
             )
-            print(res)
             return res
 
 
