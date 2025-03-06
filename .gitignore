@@ -2,5 +2,4 @@
 venv
 base.db
 
-config.py
 .env
